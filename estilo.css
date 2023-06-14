@@ -1,20 +1,55 @@
 h1 {
-    color: blue; /* Propriedade: valor */
     font-size: 24px;
     text-align: center;
-  }
-  h2 {
+    font-weight: bold;
+    color: #0b009e;
+ }
+h2 {
     font-size: 20px;
-    text-align: center;
-  }
-  
-  .imagem {
-    width:100px;
-  }
+    text-align: center; }
 
-  footer {
+.container {
+      position: relative;
+      min-height: 100%; }
+  
+.imagem {
+    width:100px; }
+
+footer {
     background-color: #080674;
     padding: 20px;
     text-align: center;
     color: #ffffff;
+    position:absolute;
+    margin: 500px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  nav {
+    background-color: #070066;
+    padding: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+  }
+  
+  a:hover {
+    background-color: #ddd;
   }
