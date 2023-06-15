@@ -6,13 +6,13 @@
 
 </head>
 <body>
+
 <ul>
-    <li><a href="#">Início</a></li>
+    <li><a href="/blog">Início</a></li>
     
   </ul>
 </nav>     
 <h1>Nome do blog</h1>
     <p style="text-align: center;">Bem vindo! Este é um blog teste.</p>
-
 </body>
 </html>
