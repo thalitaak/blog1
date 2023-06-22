@@ -6,10 +6,10 @@
 
 </head>
 <body>
-
+<nav>
 <ul>
     <li><a href="/blog">Início</a></li>
-    
+    <li><a href="/blog/formulario.php">Enviar post</a></li>
   </ul>
 </nav>     
 <h1>Nome do blog</h1>
