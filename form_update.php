@@ -1,6 +1,5 @@
 <?php
 include 'config.php';
-// $idpost=$_GET["idpost"];
 
 $idpost= $_POST['id'];
 $titulo = $_POST['titulo'];

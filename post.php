@@ -11,8 +11,10 @@ if ($result->num_rows > 0) {
        echo $row["titulo"], nl2br("\n"), $row["conteudo"], nl2br("\n"), nl2br("\n");
 ?>
 
-<p style="text-align: center;"><a href="editpost.php?idpost=<?=$row["id"]?>" class="botao">Editar post</a></p>
-<!-- <a href="editpost.php" class="botao">Editar post</a>
+<p style="text-align: center;">
+<a href="editpost.php?idpost=<?=$row["id"]?>" class="botao">Editar post</a>
+<br><a href="post_delete.php?idpost=<?=$row["id"]?>" class="botao">Excluir post </a>
+</p>
 
 
 <?php
