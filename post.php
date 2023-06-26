@@ -8,18 +8,19 @@ $sql = "SELECT * FROM post WHERE id = $idpost";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-       echo $row["titulo"], nl2br("\n"), $row["conteudo"], nl2br("\n"), nl2br("\n");
+       echo $row["titulo"], nl2br("\n"), $row["conteudo"], nl2br("\n"), nl2br("\n");     // Imprimindo título e conteudo do post
 ?>
 
 <p style="text-align: center;">
-<a href="editpost.php?idpost=<?=$row["id"]?>"><button>Editar post</button></a> 
-<button onclick="alertDeletePost()">Excluir post</button>
+<a href="editpost.php?idpost=<?=$row["id"]?>"><button>Editar post</button></a>     <!-- Botao para editar post -->
+<button onclick="alertDeletePost()">Excluir post</button>       <!-- Botao para excluir post -->
 </p>
 
 <script>
-function alertDeletePost() {
+function alertDeletePost() {         // Funcao que confirma exclusao do post 
 if (confirm('Tem certeza que deseja excluir esta postagem?') == true)
-window.location.href = "post_delete.php?idpost=<?=$row["id"]?>";
+  //let acao = 'excluir';
+  window.location.href = "bancodedados.php?acao=excluir&idpost=<?=$row["id"]?>";
 }
 </script>
 
