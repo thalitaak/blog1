@@ -12,6 +12,9 @@ switch ($acao) {
     case 'excluir':
         excluirPost($conn);
         break;
+    case 'comentar':
+        inserirComentario($conn);
+        break;
 }
 
 function inserirPost($conn) {
@@ -44,4 +47,15 @@ function excluirPost($conn) {
 <?php
 }
 
+function inserirComentario($conn) {
+    $idpost=$_GET["idpost"];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $comentario = $_POST['comentario'];
+    $sql = "INSERT INTO comentarios (idpost, nome, email, comentario) VALUES ($idpost, '$nome', '$email', '$comentario')";
+    $resultado = $conn->query($sql);
+?>
+    <meta http-equiv="refresh" content="0;url=/blog/post.php?idpost=<?=$idpost?>">
+<?php
+}
 ?>

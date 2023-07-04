@@ -34,7 +34,8 @@ footer {
   text-align: center;
   color: #ffffff;
   width: 100%;
-  height: 100px;  
+  height: 80px;
+  padding-top: 30px;
 }
 
 nav {
@@ -49,55 +50,77 @@ nav ul {
 }
   
 nav li {
-    display: inline-block;
-    margin-right: 10px;
-  }
+  display: inline-block;
+  margin-right: 10px;
+}
   
 nav a {
-    text-decoration: none; 
-    color: #ffffff;
-    padding: 5px 10px;
-  }
+  text-decoration: none; 
+  color: #ffffff;
+  padding: 5px 10px;
+}
   
 nav a:hover {
-    background-color: #00003d;
-    color: #a7a7a7;
-  }
+  background-color: #00003d;
+  color: #a7a7a7;
+}
 
-
-  form {
-    /* Apenas para centralizar o form na página */
-    margin: 0 auto;
-    width: 500px;
-    height: 500px;
-    /* Para ver as bordas do formulário */
-    padding: 1em;
-    border: 1px solid #CCC;
-    border-radius: 1em;
+form {
+  /* Apenas para centralizar o form na página */
+  margin: 0 auto;
+  width: 90%;
+  height: 550px;
+  /* Para ver as bordas do formulário */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  background-color: #ececec;
+}
+.formulario {
+  width: 90%;
+  height: 450px;
+  margin-bottom: 30px;
+  background-color: #ececec;
 }
 form div + div {
   margin-top: 1em;
 }
 
 label {
-  /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+  /*Para ter certeza que todas as labels tem o mesmo tamanho e estão alinhadas */
   display: inline-block;
-  width: 500px;
-  
+  width: 90%px;
 }
 
 input, textarea {
-  /* Para certificar-se que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
+  /* Para certificar que todos os campos de texto têm as mesmas configurações de fonte. Por padrão, textareas ter uma fonte monospace*/
   font: 1em sans-serif;
   padding: 5px;
   /* Para dar o mesmo tamanho a todos os campo de texto */
-  width: 500px;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  width: 100%;
+  /* -moz-box-sizing: border-box;
+  box-sizing: border-box; */
+ 
   /* Para harmonizar o look & feel das bordas nos campos de texto*/
   border: 1px solid #999;
 }
 
 .caixatxt {
-    height:300px;
+  height:300px;
+}
+.caixacoment {
+  height:170px
+}
+
+.secaocomentarios {
+  background-color: #d3d3d3;
+  margin: 20px;
+  /* Para ver as bordas do formulário */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+.comentario {
+  border-top: 1px solid #5f5f5f;
 }
