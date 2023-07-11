@@ -2,29 +2,34 @@
 include 'header.php';
 include 'config.php';
 
-$idpost=$_GET["idpost"]; 
+$idpost=$_GET["idpost"];
 
-$sql = "SELECT * FROM post WHERE id = $idpost";      // Imprimindo o post
+$sql = "SELECT * FROM post WHERE id = $idpost";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-  while($row = $result->fetch_assoc()) {
-    echo $row["titulo"], nl2br("\n"), $row["conteudo"], nl2br("\n"), nl2br("\n");
+  while($row = $result->fetch_assoc()) { ?> 
+    <h2> <?=$row["titulo"]?> </h2>  <!-- Imprimindo o post -->
+    <?php
+    echo nl2br("\n"), $row["conteudo"], nl2br("\n"), nl2br("\n");
+    if (isset($_SESSION['iduser'])) { // Para exibir botoes de editar/excluir post
+      if ($_SESSION['iduser']==$row['iduser']) {
+?>
+    <a href="editpost.php?idpost=<?=$idpost?>"><button>Editar</button></a>     <!-- Botao para editar post -->
+    <button onclick="alertDeletePost()">Excluir</button></p>      <!-- Botao para excluir post -->
+    <script>
+    function alertDeletePost() {       // Funcao que confirma exclusao do post 
+      if (confirm('Tem certeza que deseja excluir esta postagem?') == true)
+        window.location.href = "bancodedados.php?acao=excluir&idpost=<?=$idpost?>";
+    }
+    </script>
+<?php
+      }
+    }
   }
 }
+
+
 ?>
-
-<p style="text-align: center;">
-<a href="editpost.php?idpost=<?=$idpost?>"><button>Editar post</button></a>     <!-- Botao para editar post -->
-<button onclick="alertDeletePost()">Excluir post</button>       <!-- Botao para excluir post -->
-</p>
-
-<script>
-  function alertDeletePost() {       // Funcao que confirma exclusao do post 
-    if (confirm('Tem certeza que deseja excluir esta postagem?') == true)
-      window.location.href = "bancodedados.php?acao=excluir&idpost=<?=$idpost?>";
-  }
-</script>
-
 <div class="secaocomentarios">
   <h2>Comentários:</h2>
     <?php

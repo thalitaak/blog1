@@ -82,6 +82,13 @@ form {
   margin-bottom: 30px;
   background-color: #ececec;
 }
+.formlogin {
+  width: 50%;
+  height: 300px;
+  margin-bottom: 30px;
+  background-color: #ececec;
+}
+
 form div + div {
   margin-top: 1em;
 }
@@ -123,4 +130,27 @@ input, textarea {
 
 .comentario {
   border-top: 1px solid #5f5f5f;
+}
+
+.quadroposts {
+  background-color: #e4e4e4;
+  padding: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+.criarpost {
+  text-align: center;
+  background-color: #5e5e5e;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  padding: 5px;
+  width: 20%;
+}
+.criarpost a {
+  color: #ffffff;
+}
+.criarpost a:hover {
+  color: #a7a7a7;
 }

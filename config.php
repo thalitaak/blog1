@@ -7,6 +7,5 @@ if ($conn -> connect_errno) {
   exit();
 } //else echo "Sucesso";
 
-
 ?>
 
