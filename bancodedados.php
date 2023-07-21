@@ -25,10 +25,36 @@ switch ($acao) {
 
 function inserirPost($conn) {
     $titulo = $_POST['titulo'];
-    $conteudo = $_POST['conteudo'];
     $iduser = $_POST['iduser'];
-    $sql = "INSERT INTO post(titulo, iduser, conteudo) VALUES ('$titulo', '$iduser', '$conteudo');";
-    $resultado = $conn->query($sql);
+    $conteudo = $_POST['conteudo'];
+    // Verifica se o formulário foi enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica se um arquivo de imagem foi enviado
+        if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
+            // Define o diretório de destino para salvar a imagem
+            $diretorioDestino = "uploads/";
+
+            // Gera um nome único para o arquivo de imagem
+            $nomeArquivo = uniqid() . "_" . $_FILES["imagem"]["name"];
+
+            // Move o arquivo temporário para o diretório de destino
+            if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorioDestino . $nomeArquivo)) {
+                // O arquivo de imagem foi enviado com sucesso
+
+                // Agora você pode salvar o caminho da imagem no banco de dados ou fazer qualquer outra manipulação necessária
+                
+                // Exemplo de como salvar o caminho da imagem em uma variável
+                $camImagem = $diretorioDestino . $nomeArquivo;
+                $sql = "INSERT INTO post(titulo, imagem, iduser, conteudo) VALUES ('$titulo', '$camImagem', '$iduser', '$conteudo');";
+                $resultado = $conn->query($sql);
+                // Agora você pode usar a variável $caminhoImagem para fazer o que precisa no banco de dados
+            } else {
+                // Ocorreu um erro ao mover o arquivo
+                echo "Erro ao enviar a imagem.";
+            }
+        }
+    }
+
 ?>
     <meta http-equiv="refresh" content="0;url=/blog">
 <?php
@@ -38,8 +64,31 @@ function editarPost($conn) {
     $idpost=$_GET["idpost"];
     $titulo = $_POST['titulo'];
     $conteudo = $_POST['conteudo'];
-    $sql = "UPDATE post SET titulo = '$titulo', conteudo = '$conteudo' WHERE id = $idpost";
-    $resultado = $conn->query($sql);
+     // Verifica se o formulário foi enviado
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica se um arquivo de imagem foi enviado
+        if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] == UPLOAD_ERR_OK) {
+            // Define o diretório de destino para salvar a imagem
+            $diretorioDestino = "uploads/";
+
+            // Gera um nome único para o arquivo de imagem
+            $nomeArquivo = uniqid() . "_" . $_FILES["imagem"]["name"];
+
+            // Move o arquivo temporário para o diretório de destino
+            if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $diretorioDestino . $nomeArquivo)) {
+                // O arquivo de imagem foi enviado com sucesso
+                // Agora você pode salvar o caminho da imagem no banco de dados ou fazer qualquer outra manipulação necessária
+                // Exemplo de como salvar o caminho da imagem em uma variável
+                $camImagem = $diretorioDestino . $nomeArquivo;
+                $sql = "UPDATE post SET titulo = '$titulo', imagem = '$camImagem', conteudo = '$conteudo' WHERE id = $idpost";
+                $resultado = $conn->query($sql);
+                // Agora você pode usar a variável $caminhoImagem para fazer o que precisa no banco de dados
+            } else {
+                // Ocorreu um erro ao mover o arquivo
+                echo "Erro ao enviar a imagem.";
+            }
+        }
+    }
 ?>
     <meta http-equiv="refresh" content="0;url=/blog/post.php?idpost=<?=$idpost?>">
 <?php
@@ -81,7 +130,6 @@ function fazerLogin($conn) {
     } else {  //senão, inicia sessao:
         $row = $result->fetch_assoc();
         $iduser= $row["id"];
-        
         session_start(); // função que inicia/retoma sessão
         
         if (!isset($_SESSION['iduser'])) { // verifica se a variavel de sessao iduser ja esta definida
@@ -94,11 +142,8 @@ function fazerLogin($conn) {
 }
 
 function logout($conn) {
-    //if(isset($_SESSION['iduser'])){
-        session_start();
-        session_destroy();
-        //unset($_SESSION['iduser']);
-    //}
+    session_start();
+    session_destroy();
     header("Location: /blog/");
     exit();
 }

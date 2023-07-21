@@ -2,24 +2,42 @@
 
 <head>
 <title>Blog</title>
-<link rel="stylesheet" type="text/css" href="estilo.css">
-<link rel="stylesheet" type="text/css" href="img1.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-  <nav>
-    <ul>
-      <li><a href="/blog">Início</a></li>
-      <li><a href="/blog/main.php">Admin</a></li>
-      <?php
+
+<nav class="navbar fixed top navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/blog">Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blog/main.php">Admin</a>
+        </li>
+        <?php
         session_start();
-        if(isset($_SESSION['iduser'])===true) { // Verifica se o usuário está logado
-          echo '<li><a href="bancodedados.php?acao=logout">Sair</a></li>'; // Se estiver logado, exibe o link de logout
+        if (isset($_SESSION['iduser']) === true) { // Verifica se o usuário está logado
+          echo '<li class="nav-item">
+                  <a class="nav-link" href="/blog/bancodedados.php?acao=logout">Sair</a>
+                </li>';
         }
         ?>
-    </ul>
-  </nav>
-  <h1>Nome do blog</h1>
+      </ul>
+    </div>
+  </div>
+</nav>
 
+  
 </body>
 </html>
